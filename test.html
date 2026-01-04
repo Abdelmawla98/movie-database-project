@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    .cont{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+    }
+    .child{
+      background: lightsalmon;
+      margin: 1rem;
+      height: 200px;
+    }
+  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <div class="cont">
+    <div class="child">one</div>
+    <div class="child">two</div>
+    <div class="child">three</div>
+  </div>
+
+
+
+
+    <script>
+
+const API_KEY = "bdafe3a64592ed0b3b2c09043d54b7c8";
+BASE_URL = "https://api.themoviedb.org/3";
+
+ const getPopularMovies = async () => {
+  const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
+  const data = await response.json();
+  console.log(data.results);
+};
+
+const res = fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`).then(response=>{
+response.json().then(res2=>{
+  console.log(res2.results);
+});
+})
+
+
+//  const searchMovies = async (query) => {
+//   const response = await fetch(
+//     `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(
+//       query
+//     )}`
+//   );
+//   const data = await response.json();
+//   console.log(data.results);
+// };
+// searchMovies("pulp fiction");
+    </script>
+</body>
+</html>
